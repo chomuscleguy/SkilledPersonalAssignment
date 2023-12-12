@@ -11,6 +11,7 @@ public class WithdrawalManager : MonoBehaviour
     [SerializeField] private GameObject _100000Amount;
     [SerializeField] private GameObject _1000000Amount;
     [SerializeField] private GameObject InputAmount;
+    [SerializeField] private GameObject WarningMessage;
     [SerializeField] private TMP_InputField InputTxt;
 
     private int amount;
@@ -68,7 +69,13 @@ public class WithdrawalManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("정수를 입력해주세요.");
+            WarningMessage.SetActive(true);
         }
     }
+
+    public void WarningBox()
+    {
+        WarningMessage.SetActive(false);
+    }
+    
 }
