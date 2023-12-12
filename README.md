@@ -14,3 +14,25 @@
 UI작업 끝
 
 로직 넣는중
+
+GameManager 밑에 depositManager와 WithdrawalManager를 통해 입출금 관리?
+
+캐쉬랑 밸런스는 GameManager가 관리?
+
+싱글톤화해서 depositManager와 WithdrawalManager에 주기
+
+//버튼을 누르면 입출금 실행
+
+버튼 마다 따로 메서드를 만들어야하나?
+
+아니면 한개의 메서드로 가능하려나
+
+버튼에 amount를 달고 
+
+실행함수 따로 설정이 나을듯?
+
+text값을 직접변환? 
+
+입급 시스템 완성
+
+GameManager에서 private로 설정하고 메서드로 depositManager로 가져와서 처리함
