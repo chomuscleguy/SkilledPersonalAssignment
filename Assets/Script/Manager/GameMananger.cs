@@ -17,8 +17,13 @@ public class GameMananger : MonoBehaviour
     [SerializeField] private GameObject MainUI;
     [SerializeField] private GameObject DepositUI;
 
+    private DepositManager depositManager;
+    private WithdrawalManager withdrawalManager;
     private void Awake()
     {
+        depositManager = FindObjectOfType<DepositManager>();
+        withdrawalManager = FindObjectOfType<WithdrawalManager>();
+
         if (Instance == null)
         {
             Instance = this;
@@ -59,10 +64,6 @@ public class GameMananger : MonoBehaviour
     #endregion
 
 
-
-
-
-
     public void Deposit(int amount)
     {
         int currentCash = int.Parse(Cash.text);
@@ -83,6 +84,9 @@ public class GameMananger : MonoBehaviour
         DepositUI.SetActive(false);
         WithdrawalUI.SetActive(false);
         MainUI.SetActive(true);
+        depositManager.Empty();
+        withdrawalManager.Empty();
+
     }
     public void deposit()
     {

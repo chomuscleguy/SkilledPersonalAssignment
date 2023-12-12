@@ -80,17 +80,25 @@ public class WithdrawalManager : MonoBehaviour
         else
         {
             WarningMessage.SetActive(true);
+            
         }
     }
 
     public void WarningBox()
     {
         WarningMessage.SetActive(false);
+        Empty();
     }
 
     public void SufficientWarningBox()
     {
         SufficientWarningMessage.SetActive(false);
+        Empty();
+    }
+
+    public void Empty()
+    {
+        InputTxt.text = "";
     }
 }
     

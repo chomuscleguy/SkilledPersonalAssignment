@@ -86,10 +86,17 @@ public class DepositManager : MonoBehaviour
     public void WarningBox()
     {
         WarningMessage.SetActive(false);
+        Empty();
     }
 
     public void SufficientWarningBox()
     {
         SufficientWarningMessage.SetActive(false);
+        Empty();
+    }
+
+    public void Empty()
+    {
+        InputTxt.text = "";
     }
 }
