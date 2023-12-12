@@ -13,6 +13,7 @@ public class DepositManager : MonoBehaviour
     [SerializeField] private GameObject _1000000Amount;
     [SerializeField] private GameObject InputAmount;
     [SerializeField] private GameObject WarningMessage;
+    [SerializeField] private GameObject SufficientWarningMessage;
     [SerializeField] private TMP_InputField InputTxt;
 
     private int amount;
@@ -30,7 +31,7 @@ public class DepositManager : MonoBehaviour
 
         if (cashValue < amount)
         {
-            Debug.Log("잔액이 부족합니다.");
+            SufficientWarningMessage.SetActive(true);
             amount = 0;
         }
         else
@@ -63,18 +64,32 @@ public class DepositManager : MonoBehaviour
     public void Amount4()
     {
         bool isNum = int.TryParse(InputTxt.text, out _);
+        
         if (isNum == true)
         {
             amount = int.Parse(InputTxt.text);
-            DepositAmount();
+            if (amount > 0)
+            {
+                DepositAmount();
+            }
+            else
+            {
+                WarningMessage.SetActive(true);
+            }
         }
         else
         {
             WarningMessage.SetActive(true);
         }
     }
+
     public void WarningBox()
     {
         WarningMessage.SetActive(false);
+    }
+
+    public void SufficientWarningBox()
+    {
+        SufficientWarningMessage.SetActive(false);
     }
 }

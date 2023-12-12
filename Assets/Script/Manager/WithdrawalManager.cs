@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -12,6 +13,7 @@ public class WithdrawalManager : MonoBehaviour
     [SerializeField] private GameObject _1000000Amount;
     [SerializeField] private GameObject InputAmount;
     [SerializeField] private GameObject WarningMessage;
+    [SerializeField] private GameObject SufficientWarningMessage;
     [SerializeField] private TMP_InputField InputTxt;
 
     private int amount;
@@ -29,7 +31,7 @@ public class WithdrawalManager : MonoBehaviour
 
         if (balanceValue < amount)
         {
-            Debug.Log("잔액이 부족합니다.");
+            SufficientWarningMessage.SetActive(true);
             amount = 0;
         }
         else
@@ -62,10 +64,18 @@ public class WithdrawalManager : MonoBehaviour
     public void Amount4()
     {
         bool isNum = int.TryParse(InputTxt.text, out _);
+
         if (isNum == true)
         {
             amount = int.Parse(InputTxt.text);
-            WithdrawalAmount();
+            if (amount > 0)
+            {
+                WithdrawalAmount();
+            }
+            else
+            {
+                WarningMessage.SetActive(true);
+            }
         }
         else
         {
@@ -77,5 +87,10 @@ public class WithdrawalManager : MonoBehaviour
     {
         WarningMessage.SetActive(false);
     }
-    
+
+    public void SufficientWarningBox()
+    {
+        SufficientWarningMessage.SetActive(false);
+    }
 }
+    
