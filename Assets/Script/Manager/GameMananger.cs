@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
@@ -49,6 +50,7 @@ public class GameMananger : MonoBehaviour
     {
         Cash.text = newValue.ToString();
     }
+
     #endregion
 
     #region BalanceMethod
@@ -64,21 +66,18 @@ public class GameMananger : MonoBehaviour
     #endregion
 
 
-    public void Deposit(int amount)
-    {
-        int currentCash = int.Parse(Cash.text);
-        int newCash = currentCash + amount;
-
-        Cash.text = newCash.ToString();
-    }
-
-
-
     public void Withdrawal()
     {
         WithdrawalUI.SetActive(true);
         MainUI.SetActive(false);
     }
+
+    public void deposit()
+    {
+        DepositUI.SetActive(true);
+        MainUI.SetActive(false);
+    }
+
     public void Exit()
     {
         DepositUI.SetActive(false);
@@ -86,11 +85,5 @@ public class GameMananger : MonoBehaviour
         MainUI.SetActive(true);
         depositManager.Empty();
         withdrawalManager.Empty();
-
-    }
-    public void deposit()
-    {
-        DepositUI.SetActive(true);
-        MainUI.SetActive(false);
     }
 }

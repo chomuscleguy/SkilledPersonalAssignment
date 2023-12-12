@@ -20,14 +20,13 @@ public class DepositManager : MonoBehaviour
     private void Start()
     {
         gameManager = GameMananger.Instance;
+
+        InputTxt.onValueChanged.AddListener(OnInputValueChanged);
     }
     public void DepositAmount()
     {
-
         int cashValue = int.Parse(gameManager.GetCashValue());
         int balanceValue = int.Parse(gameManager.GetBalanceValue());
-
-        
 
         if (cashValue < amount)
         {
@@ -98,5 +97,19 @@ public class DepositManager : MonoBehaviour
     public void Empty()
     {
         InputTxt.text = "";
+    }
+
+    private void OnInputValueChanged(string newValue)
+    {
+        string filteredValue = "";
+        foreach (char c in newValue)
+        {
+            if (char.IsDigit(c))
+            {
+                filteredValue += c;
+            }
+        }
+
+        InputTxt.text = filteredValue; // 숫자 이외의 문자를 제거한 값을 다시 입력 필드에 설정
     }
 }
