@@ -36,3 +36,7 @@ text값을 직접변환?
 입급 시스템 완성
 
 GameManager에서 private로 설정하고 메서드로 depositManager로 가져와서 처리함
+
+inputField 완성
+
+정수를 입력하지 않을 시 디버그로그 나오게 해둠 UI생성해서 팝업창 띄어줄 예정 그리고 exit을 누를 시 input text에 empty가 되었으면 좋겠음
