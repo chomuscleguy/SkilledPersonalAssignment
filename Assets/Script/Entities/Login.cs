@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.Windows;
 
 public class Login : MonoBehaviour
 {
@@ -12,8 +14,8 @@ public class Login : MonoBehaviour
     public void _Login()
     {
         string name = uiManager.GetName();
-        string id = uiManager.GetID();
-        string password = uiManager.GetPW();
+        string id = uiManager.GetInputID();
+        string password = uiManager.GetInputPW();
 
         string key = "UserData" + id;
 
@@ -26,16 +28,18 @@ public class Login : MonoBehaviour
             if (savedPassword == password)
             {
                 Debug.Log("로그인 성공!");
-                // 로그인 성공 시 추가적인 작업 수행
+                SceneManager.LoadScene("Main Scene");
             }
             else
             {
                 Debug.Log("잘못된 비밀번호입니다.");
+                uiManager.LoginWarningBoxtrue();
             }
         }
         else
         {
             Debug.Log("존재하지 않는 id입니다.");
+            uiManager.LoginWarningBoxtrue();
         }
     }
 }

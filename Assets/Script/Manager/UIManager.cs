@@ -55,23 +55,16 @@ public class UIManager : MonoBehaviour
     {
         CompleteSignUp.SetActive(false);
     }
-    public void Login()
-    {
-        if (InputID.text.Length < 3 || InputPW.text.Length < 5)
-        {
-            InputWarningMessage.SetActive(true);
-        }
-        else
-        {
-            login._Login();
-            SceneManager.LoadScene("Main Scene");
-        }
-    }
 
-    public void LoginWarningBox()
+    public void LoginWarningBoxtrue()
+    {
+        InputWarningMessage.SetActive(true);
+    }
+    public void LoginWarningBoxfalse()
     {
         InputWarningMessage.SetActive(false);
     }
+
     public void SignUpWarningBoxfalse()
     {
         SignUpWarningMessage.SetActive(false);
@@ -81,8 +74,6 @@ public class UIManager : MonoBehaviour
         SignUpWarningMessage.SetActive(true);
     }
 
-
-
     public void Empty()
     {
         SignUpID.text = "";
@@ -90,6 +81,7 @@ public class UIManager : MonoBehaviour
         ConfirmPW.text = "";
         Name.text = "";
     }
+
     #region NameMethod
     public string GetName()
     {
@@ -131,6 +123,22 @@ public class UIManager : MonoBehaviour
     {
         CheckVaild.text = text;
     }
+    #endregion
+
+    #region InputIDMethod
+    public string GetInputID()
+    {
+        return InputID.text;
+    }
+
+    #endregion
+
+    #region InputPasswordMethod
+    public string GetInputPW()
+    {
+        return InputPW.text;
+    }
+
     #endregion
 }
 

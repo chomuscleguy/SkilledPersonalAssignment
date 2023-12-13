@@ -20,7 +20,6 @@ public class DepositManager : MonoBehaviour
     private void Start()
     {
         gameManager = GameManager.Instance;
-
     }
     public void DepositAmount()
     {

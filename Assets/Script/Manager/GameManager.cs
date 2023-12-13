@@ -11,6 +11,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+    private Login login;
 
     [SerializeField] private TextMeshProUGUI Cash;
     [SerializeField] private TextMeshProUGUI Balance;
@@ -24,6 +25,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        login = GetComponent<Login>();
         depositManager = FindObjectOfType<DepositManager>();
         withdrawalManager = FindObjectOfType<WithdrawalManager>();
 
