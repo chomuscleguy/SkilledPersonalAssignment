@@ -65,4 +65,6 @@ Login만들기
 
 추가로 통화단위 다시 진행해보기
 
+warning message가 나올때 다른 UI클릭 안되게 완
+
 
