@@ -6,9 +6,11 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LoginManager : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
     private GameManager gameManager;
+    private SignUp signUp;
+    private Login login;
 
     [SerializeField] private GameObject LoginButton;
     [SerializeField] private GameObject SignUpButton;
@@ -24,16 +26,34 @@ public class LoginManager : MonoBehaviour
     [SerializeField] private TMP_InputField SignUpID;
     [SerializeField] private TMP_InputField SignUpPW;
     [SerializeField] private TMP_InputField ConfirmPW;
-    [SerializeField] private TMP_InputField Name; 
+    [SerializeField] private TMP_InputField Name;
+
+    private void Start()
+    {
+        signUp = GetComponent<SignUp>();
+        login = GetComponent<Login>();
+    }
 
     public void Cancle()
     {
         SignUpUI.SetActive(false);
         Empty();
     }
-    public void SignUpPopUp()
+    public void SignUpPopUptrue()
     {
         SignUpUI.SetActive(true);
+    }
+    public void SignUpPopUpfalse()
+    {
+        SignUpUI.SetActive(false);
+    }
+    public void CompleteSignUpBoxtrue()
+    {
+        CompleteSignUp.SetActive(true);
+    }
+    public void CompleteSignUpBoxfasle()
+    {
+        CompleteSignUp.SetActive(false);
     }
     public void Login()
     {
@@ -43,6 +63,7 @@ public class LoginManager : MonoBehaviour
         }
         else
         {
+            login._Login();
             SceneManager.LoadScene("Main Scene");
         }
     }
@@ -51,15 +72,16 @@ public class LoginManager : MonoBehaviour
     {
         InputWarningMessage.SetActive(false);
     }
-    public void SignUpWarningBox()
+    public void SignUpWarningBoxfalse()
     {
         SignUpWarningMessage.SetActive(false);
     }
-
-    public void CompleteSignUpBox()
+    public void SignUpWarningBoxtrue()
     {
-        CompleteSignUp.SetActive(false);
+        SignUpWarningMessage.SetActive(true);
     }
+
+
 
     public void Empty()
     {
@@ -68,46 +90,48 @@ public class LoginManager : MonoBehaviour
         ConfirmPW.text = "";
         Name.text = "";
     }
-    public void SignUp()
-{
-        if (Name.text.Length >= 2 && Name.text.Length <=5)
-        {
-            if (SignUpID.text.Length >= 3)
-            {
-                if (SignUpPW.text.Length >= 5)
-                {
-
-                    if (SignUpPW.text == ConfirmPW.text)
-                    {
-                        //사인업 만들어야함
-                        SignUpUI.SetActive(false);
-                        CompleteSignUp.SetActive(true);
-                        Empty();
-                    }
-                    else
-                    {
-                        CheckVaild.text = "Passwords must match";
-                        SignUpWarningMessage.SetActive(true);
-                    }
-                }
-                else
-                {
-                    CheckVaild.text = "Please chceck PW";
-                    SignUpWarningMessage.SetActive(true);
-                }
-            }
-            else
-            {
-                CheckVaild.text = "Please chceck ID";
-                SignUpWarningMessage.SetActive(true);
-            }
-        }
-        else
-        {
-            CheckVaild.text = "Please chceck Name";
-            SignUpWarningMessage.SetActive(true);
-        }
+    #region NameMethod
+    public string GetName()
+    {
+        return Name.text;
     }
+    #endregion
+
+    #region IDMethod
+    public string GetID()
+    {
+        return SignUpID.text;
+    }
+
+    #endregion
+
+    #region PasswordMethod
+    public string GetPW()
+    {
+        return SignUpPW.text;
+    }
+
+    #endregion
+
+    #region ConfirmMethod
+    public string GetConfirm()
+    {
+        return ConfirmPW.text;
+    }
+
+    #endregion
+
+    #region CheckVaildMethod
+    public string GetCheckVaild()
+    {
+        return CheckVaild.text;
+    }
+
+    public void SetCheckVaild(string text)
+    {
+        CheckVaild.text = text;
+    }
+    #endregion
 }
 
 

@@ -1851,9 +1851,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1532374703}
-        m_TargetAssemblyTypeName: LoginManager, Assembly-CSharp
-        m_MethodName: SignUp
+      - m_Target: {fileID: 1532374705}
+        m_TargetAssemblyTypeName: SignUp, Assembly-CSharp
+        m_MethodName: _SignUp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3466,8 +3466,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1532374703}
-        m_TargetAssemblyTypeName: LoginManager, Assembly-CSharp
-        m_MethodName: SignUpWarningBox
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: SignUpWarningBoxfalse
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4757,8 +4757,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1532374703}
-        m_TargetAssemblyTypeName: LoginManager, Assembly-CSharp
-        m_MethodName: SignUpPopUp
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: SignUpPopUptrue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5193,7 +5193,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1532374703}
-        m_TargetAssemblyTypeName: LoginManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: LoginWarningBox
         m_Mode: 1
         m_Arguments:
@@ -5987,8 +5987,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1532374704}
   - component: {fileID: 1532374703}
+  - component: {fileID: 1532374705}
   m_Layer: 0
-  m_Name: LoginManager
+  m_Name: UIManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6013,7 +6014,7 @@ MonoBehaviour:
   SignUpUI: {fileID: 287035449}
   InputWarningMessage: {fileID: 1062443360}
   SignUpWarningMessage: {fileID: 252462302}
-  CompleteSignUp: {fileID: 0}
+  CompleteSignUp: {fileID: 712157439}
   CheckVaild: {fileID: 1831383594}
   InputID: {fileID: 1417012568}
   InputPW: {fileID: 2110619118}
@@ -6036,6 +6037,19 @@ Transform:
   m_Father: {fileID: 1263237296}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1532374705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1532374702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ada59fa55babd4459fbd49826031ff5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiManager: {fileID: 0}
 --- !u!1 &1535389409
 GameObject:
   m_ObjectHideFlags: 0
@@ -7846,8 +7860,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1532374703}
-        m_TargetAssemblyTypeName: LoginManager, Assembly-CSharp
-        m_MethodName: CompleteSignUpBox
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: CompleteSignUpBoxfasle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
