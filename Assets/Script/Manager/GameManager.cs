@@ -5,11 +5,12 @@ using TMPro;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameMananger : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    public static GameMananger Instance;
+    public static GameManager Instance { get; private set; }
 
     [SerializeField] private TextMeshProUGUI Cash;
     [SerializeField] private TextMeshProUGUI Balance;
@@ -20,6 +21,7 @@ public class GameMananger : MonoBehaviour
 
     private DepositManager depositManager;
     private WithdrawalManager withdrawalManager;
+
     private void Awake()
     {
         depositManager = FindObjectOfType<DepositManager>();
@@ -33,6 +35,11 @@ public class GameMananger : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void Init()
+    {
+        // 초기 세팅
     }
     private void Start()
     {
@@ -65,6 +72,18 @@ public class GameMananger : MonoBehaviour
     }
     #endregion
 
+    #region NameMethod
+    public string GetName()
+    {
+        return Name.text;
+    }
+
+    public void SetName(string newName)
+    {
+        Name.text = newName;
+    }
+    #endregion
+
 
     public void Withdrawal()
     {
@@ -85,5 +104,10 @@ public class GameMananger : MonoBehaviour
         MainUI.SetActive(true);
         depositManager.Empty();
         withdrawalManager.Empty();
+    }
+
+    public void Text()
+    {
+        SceneManager.LoadScene("Start Scene");
     }
 }

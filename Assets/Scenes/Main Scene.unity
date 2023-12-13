@@ -171,7 +171,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 107234942}
-  - component: {fileID: 107234941}
+  - component: {fileID: 107234943}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -179,24 +179,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &107234941
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 107234940}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fdb71b0751800c4a8d1e7cc893691e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Cash: {fileID: 1059186775}
-  Balance: {fileID: 642389368}
-  Name: {fileID: 335444870}
-  WithdrawalUI: {fileID: 1075430664}
-  MainUI: {fileID: 556404940}
-  DepositUI: {fileID: 1567848425}
 --- !u!4 &107234942
 Transform:
   m_ObjectHideFlags: 0
@@ -212,6 +194,24 @@ Transform:
   m_Father: {fileID: 1819397223}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &107234943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107234940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d66586ffb7fcd0a4eacae92091e6a65e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cash: {fileID: 1059186775}
+  Balance: {fileID: 642389368}
+  Name: {fileID: 335444870}
+  WithdrawalUI: {fileID: 1075430664}
+  MainUI: {fileID: 556404940}
+  DepositUI: {fileID: 1567848425}
 --- !u!1 &154969686
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,8 +296,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 107234941}
-        m_TargetAssemblyTypeName: GameMananger, Assembly-CSharp
+      - m_Target: {fileID: 107234943}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: Exit
         m_Mode: 1
         m_Arguments:
@@ -2497,8 +2497,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 107234941}
-        m_TargetAssemblyTypeName: GameMananger, Assembly-CSharp
+      - m_Target: {fileID: 107234943}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: deposit
         m_Mode: 1
         m_Arguments:
@@ -2669,8 +2669,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 107234941}
-        m_TargetAssemblyTypeName: GameMananger, Assembly-CSharp
+      - m_Target: {fileID: 107234943}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: Withdrawal
         m_Mode: 1
         m_Arguments:
@@ -4131,8 +4131,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 107234941}
-        m_TargetAssemblyTypeName: GameMananger, Assembly-CSharp
+      - m_Target: {fileID: 107234943}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: Exit
         m_Mode: 1
         m_Arguments:
@@ -4555,10 +4555,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1343472106}
   - {fileID: 1341254525}
   - {fileID: 1832321351}
   - {fileID: 904718334}
-  - {fileID: 1343472106}
   - {fileID: 1894571637}
   - {fileID: 995995398}
   m_Father: {fileID: 194455248}
@@ -4695,14 +4695,14 @@ MonoBehaviour:
   m_VerticalScrollbarEventHandler: {fileID: 0}
   m_LayoutGroup: {fileID: 0}
   m_ScrollSensitivity: 1
-  m_ContentType: 7
-  m_InputType: 2
+  m_ContentType: 2
+  m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
   m_HideSoftKeyboard: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 2
   m_RegexValue: 
   m_GlobalPointSize: 14
   m_CharacterLimit: 0
@@ -6671,10 +6671,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1553765322}
   - {fileID: 1810554803}
   - {fileID: 2101652354}
   - {fileID: 1530240801}
-  - {fileID: 1553765322}
   - {fileID: 1129030594}
   - {fileID: 154969687}
   m_Father: {fileID: 194455248}
@@ -7424,9 +7424,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 107234942}
   - {fileID: 1657977678}
   - {fileID: 225368454}
+  - {fileID: 107234942}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

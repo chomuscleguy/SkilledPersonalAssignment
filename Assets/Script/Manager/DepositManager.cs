@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class DepositManager : MonoBehaviour
 {
-    private GameMananger gameManager;
+    private GameManager gameManager;
     [SerializeField] private GameObject _10000Amount;
     [SerializeField] private GameObject _100000Amount;
     [SerializeField] private GameObject _1000000Amount;
@@ -19,7 +19,7 @@ public class DepositManager : MonoBehaviour
     private int amount;
     private void Start()
     {
-        gameManager = GameMananger.Instance;
+        gameManager = GameManager.Instance;
 
     }
     public void DepositAmount()

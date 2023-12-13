@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class WithdrawalManager : MonoBehaviour
 {
-    private GameMananger gameManager;
+    private GameManager gameManager;
     [SerializeField] private GameObject _10000Amount;
     [SerializeField] private GameObject _100000Amount;
     [SerializeField] private GameObject _1000000Amount;
@@ -19,7 +19,7 @@ public class WithdrawalManager : MonoBehaviour
     private int amount;
     private void Start()
     {
-        gameManager = GameMananger.Instance;
+        gameManager = GameManager.Instance;
 
     }
     public void WithdrawalAmount()
