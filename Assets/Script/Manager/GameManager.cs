@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using TMPro;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
@@ -11,7 +12,6 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    private Login login;
 
     [SerializeField] private TextMeshProUGUI Cash;
     [SerializeField] private TextMeshProUGUI Balance;
@@ -25,7 +25,6 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        login = GetComponent<Login>();
         depositManager = FindObjectOfType<DepositManager>();
         withdrawalManager = FindObjectOfType<WithdrawalManager>();
 
@@ -37,11 +36,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    public void Init()
-    {
-        // 초기 세팅
     }
     private void Start()
     {
@@ -112,4 +106,5 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("Start Scene");
     }
+
 }

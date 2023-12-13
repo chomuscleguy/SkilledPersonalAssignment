@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class SignUp : MonoBehaviour
 {
+    
     [SerializeField] private UIManager uiManager;
 
     private void Start()
@@ -19,7 +20,7 @@ public class SignUp : MonoBehaviour
         string password = uiManager.GetPW();
         string confirm = uiManager.GetConfirm();
 
-        string key = "UserData" + id;
+        string key = name + id;
 
         if (name.Length >= 2 && name.Length <= 5)
         {
@@ -37,8 +38,6 @@ public class SignUp : MonoBehaviour
                     {
                         if (password == confirm)
                         {
-                            PlayerPrefs.SetString(key, name);
-                            PlayerPrefs.SetString(key, id);
                             PlayerPrefs.SetString(key, password);
                             PlayerPrefs.Save();
                             Debug.Log("회원가입 완료!");

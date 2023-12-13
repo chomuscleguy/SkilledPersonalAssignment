@@ -6,6 +6,8 @@ using UnityEngine.Windows;
 
 public class Login : MonoBehaviour
 {
+    public static string key;
+
     [SerializeField] private UIManager uiManager;
     private void Start()
     {
@@ -17,7 +19,7 @@ public class Login : MonoBehaviour
         string id = uiManager.GetInputID();
         string password = uiManager.GetInputPW();
 
-        string key = "UserData" + id;
+        key = name + id;
 
         // id을 키로 하는 데이터가 존재하는지 확인
         if (PlayerPrefs.HasKey(key))
