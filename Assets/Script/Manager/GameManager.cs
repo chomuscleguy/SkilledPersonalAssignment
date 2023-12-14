@@ -11,22 +11,16 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
+    public static GameManager Instance;
 
     [SerializeField] private TextMeshProUGUI Cash;
     [SerializeField] private TextMeshProUGUI Balance;
     [SerializeField] private TextMeshProUGUI Name;
-    [SerializeField] private GameObject WithdrawalUI;
-    [SerializeField] private GameObject MainUI;
-    [SerializeField] private GameObject DepositUI;
 
-    private DepositManager depositManager;
-    private WithdrawalManager withdrawalManager;
+    public UserData userData;
 
     private void Awake()
     {
-        depositManager = FindObjectOfType<DepositManager>();
-        withdrawalManager = FindObjectOfType<WithdrawalManager>();
 
         if (Instance == null)
         {
@@ -39,72 +33,28 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        SetCashValue(100000);
-        SetBalanceValue(50000);
+        SetCash(userData.cash);
+        SetBalance(userData.balacne);
+        SetName(userData.username);
     }
 
-    #region CashMethod
-    public string GetCashValue()
+    string FormatNumber(int num)
     {
-        return Cash.text;
+        return string.Format("{0:N0}", num);
     }
 
-    public void SetCashValue(int newValue)
+    public void SetCash(int newValue)
     {
-        Cash.text = newValue.ToString();
+        Cash.text = FormatNumber(newValue);
     }
 
-    #endregion
-
-    #region BalanceMethod
-    public string GetBalanceValue()
+    public void SetBalance(int newValue)
     {
-        return Balance.text;
-    }
-
-    public void SetBalanceValue(int newValue)
-    {
-        Balance.text = newValue.ToString();
-    }
-    #endregion
-
-    #region NameMethod
-    public string GetName()
-    {
-        return Name.text;
+        Balance.text = FormatNumber(newValue);
     }
 
     public void SetName(string newName)
     {
         Name.text = newName;
     }
-    #endregion
-
-
-    public void Withdrawal()
-    {
-        WithdrawalUI.SetActive(true);
-        MainUI.SetActive(false);
-    }
-
-    public void deposit()
-    {
-        DepositUI.SetActive(true);
-        MainUI.SetActive(false);
-    }
-
-    public void Exit()
-    {
-        DepositUI.SetActive(false);
-        WithdrawalUI.SetActive(false);
-        MainUI.SetActive(true);
-        depositManager.Empty();
-        withdrawalManager.Empty();
-    }
-
-    public void Text()
-    {
-        SceneManager.LoadScene("Start Scene");
-    }
-
 }

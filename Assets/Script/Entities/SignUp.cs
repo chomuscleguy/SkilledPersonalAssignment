@@ -1,78 +1,79 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Linq;
+using TMPro;
 using UnityEngine;
 
 public class SignUp : MonoBehaviour
 {
-    
-    [SerializeField] private UIManager uiManager;
 
-    private void Start()
-    {
-        uiManager = GetComponent<UIManager>();
-    }
+    public UserData userData;
+
+    [SerializeField] private TMP_InputField SignUpID;
+    [SerializeField] private TMP_InputField SignUpPW;
+    [SerializeField] private TMP_InputField ConfirmPW;
+    [SerializeField] private TMP_InputField Name;
+    [SerializeField] private TextMeshProUGUI CheckVaild;
+    [SerializeField] private GameObject SignUpWarningMessage;
+    [SerializeField] private GameObject CompleteSignUp;
 
     public void _SignUp()
     {
-        string name = uiManager.GetName();
-        string id = uiManager.GetID();
-        string password = uiManager.GetPW();
-        string confirm = uiManager.GetConfirm();
-
-        string key = name + id;
-
-        if (name.Length >= 2 && name.Length <= 5)
+        string id = SignUpID.text;
+        string password = SignUpPW.text;
+        string name = Name.text;
+        string cofirm = ConfirmPW.text;
+        if (SignUpID.text.Length >= 3)
         {
-
-            if (id.Length >= 3)
+            if (id == userData.id)
             {
-                if (PlayerPrefs.HasKey(key))
-                {
-                    uiManager.SetCheckVaild("User ID is already in use");
-                    uiManager.SignUpWarningBoxtrue();
-                }
-                else
-                {
-                    if (password.Length >= 5)
-                    {
-                        if (password == confirm)
-                        {
-                            PlayerPrefs.SetString(key, password);
-                            PlayerPrefs.Save();
-                            Debug.Log("회원가입 완료!");
-                            uiManager.SignUpPopUpfalse();
-                            uiManager.CompleteSignUpBoxtrue();
-                            uiManager.Empty();
-                        }
-                        else
-                        {
-                            uiManager.SetCheckVaild("Passwords must match");
-                            uiManager.SignUpWarningBoxtrue();
-                        }
-                    }
-                    else
-                    {
-                        uiManager.SetCheckVaild("Please chceck PW");
-                        uiManager.SignUpWarningBoxtrue();
-                    }
-                } 
+                CheckVaild.text = "User ID is already in use";
+                SignUpWarningMessage.SetActive(true);
             }
             else
             {
-                Debug.Log("웨않되");
-                uiManager.SetCheckVaild("Please chceck ID");
-                uiManager.SignUpWarningBoxtrue();
+                if (password.Length >= 5)
+                {
+                    if (password == cofirm)
+                    {
+                        RegisterUser(id, password, name);
+                        Debug.Log("회원가입 완료!");
+                        CompleteSignUp.SetActive(true);
+                        Empty();
+                    }
+                    else
+                    {
+                        CheckVaild.text = "Passwords must match";
+                        SignUpWarningMessage.SetActive(true);
+                    }
+                }
+                else
+                {
+                    CheckVaild.text = "Please chceck PW";
+                    SignUpWarningMessage.SetActive(true);
+                }
             }
         }
         else
         {
-            uiManager.SetCheckVaild("Please chceck Name");
-            uiManager.SignUpWarningBoxtrue();
+            Debug.Log("웨않되");
+            CheckVaild.text = "Please chceck ID";
+            SignUpWarningMessage.SetActive(true);
         }
     }
-    public void Reset()
+    public void Empty()
     {
-        PlayerPrefs.DeleteAll();
+        SignUpID.text = "";
+        SignUpPW.text = "";
+        ConfirmPW.text = "";
+        Name.text = "";
+    }
+    
+    
+    public void RegisterUser(string id, string password, string name)
+    {
+        userData.id = id;
+        userData.password = password;
+        userData.username = name;
     }
 }
